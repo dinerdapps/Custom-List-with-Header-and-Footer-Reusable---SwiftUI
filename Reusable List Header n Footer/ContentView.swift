@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        CustomListView(
+            data: (0..<10).map { ExampleData(id: $0, text: "Row \($0)") },
+            rowContent: { exampleData in
+                Text(exampleData.text)
+            },
+            header: Text("Header").font(.largeTitle),
+            footer: Text("Footer").font(.largeTitle)
+        )
     }
 }
 
